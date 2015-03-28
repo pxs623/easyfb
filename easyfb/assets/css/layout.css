@@ -1,0 +1,7 @@
+*{padding:0px;margin:0px;border:0px;outline:none}
+ol,ul,li{ list-style:none}
+b{ font-style:normal}
+body{ font-family:"微软雅黑","宋体"; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+a{color:#0099FF;}
+#page{width:640px;height:100%;}
+  
