@@ -49,7 +49,7 @@ public class ViewManager {
 	}
 
 	public void putView(String key, ViewEntity view) {
-		if ("file:///android_asset/index/index.html".equals(key)) {
+		if ("file:///android_asset/index.html".equals(key)) {
 			view.setMenuLevel(0);
 		} else if (null == viewList.get(key)) {
 			view.setMenuLevel(menuLevel + 1);

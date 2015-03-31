@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements MyInterface {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		aCache = ACache.get(this);
+		//aCache = ACache.get(this);
 		ViewManager.getManager().setContext(this);
 
 		LinearLayout layout = (LinearLayoutSoftKeyboardDetect) getLayoutInflater()
@@ -52,12 +52,12 @@ public class MainActivity extends Activity implements MyInterface {
 		Intent i = getIntent();
 		bundle = i.getExtras();
 		if (bundle != null) {
-			launchUrl = bundle.getString("url", "file:///android_asset/index/index.html");
+			launchUrl = bundle.getString("url", "file:///android_asset/index.html");
 			title = i.getStringExtra("title");
 			needReload = i.getBooleanExtra("needReload", true);
 			isBackFlag = i.getBooleanExtra("isBackFlag", false);
 		} else {
-
+			launchUrl = "file:///android_asset/index.html";
 		}
 
 		if (needReload && !isBackFlag) {// foward
@@ -96,9 +96,9 @@ public class MainActivity extends Activity implements MyInterface {
 				webview.init();
 				layout.addView(webview, 2);
 			} else {
-					viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
-					System.out.println(vb);
-					title = vb.getTitle();
+					//viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
+					//System.out.println(vb);
+					//title = vb.getTitle();
 					needReload = true;
 					isBackFlag = false;
 					forward(layout, relative);
@@ -134,9 +134,9 @@ public class MainActivity extends Activity implements MyInterface {
 		ve.setLayout(layout);
 		ViewManager.getManager().putView(launchUrl, ve);
 		// disk cache
-		viewBean vb = new viewBean();
+/*		viewBean vb = new viewBean();
 		vb.setTitle(title);
-		aCache.put(launchUrl, vb);
+		aCache.put(launchUrl, vb);*/
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -146,10 +146,10 @@ public class MainActivity extends Activity implements MyInterface {
 			} else {
 				ViewManager.getManager().setBackFlag(true);
 			}
-			if ("file:///android_asset/index/index.html".equals(launchUrl)) {
+			if ("file:///android_asset/index.html".equals(launchUrl)) {
 				AlertDialog.Builder builder = new Builder(this);
-				builder.setMessage("sfsa");
-				builder.setTitle("sfdsaʾ");
+				builder.setMessage("quit");
+				builder.setTitle("quitʾ");
 				builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {

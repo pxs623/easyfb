@@ -1,17 +1,15 @@
 
-function goForward(url,title)
+function forward(url)
 {	
     var obj=new Object();
-    obj.url= ("undefined" == typeof url)?"":url;
-    obj.title=("undefined" == typeof title)?"":title;
+    obj.url=("undefined" == typeof url)?"":url;
     android.action("forward:"+JSON.stringify(obj));
 }
 
-function goBack(url,title,needReload,isBackFlag)
+function backward(url,needReload,isBackFlag)
 {
     var obj=new Object();
     obj.url=("undefined" == typeof url)?"":url;
-    obj.title=("undefined" == typeof title)?"":title;
     obj.needReload=("undefined" == typeof needReload)?false:needReload;
     obj.isBackFlag=("undefined" == typeof isBackFlag)?false:isBackFlag;
     android.action("back:"+JSON.stringify(obj));
