@@ -45,7 +45,7 @@ public class MyWebView extends WebView {
 		webSet.setLoadWithOverviewMode(true);
 		webSet.setAppCacheEnabled(true);
 		webSet.setAppCacheMaxSize(1024 * 1024 * 8);
-		webSet.setCacheMode(WebSettings.LOAD_DEFAULT); // 设置 缓存模式
+		webSet.setCacheMode(WebSettings.LOAD_DEFAULT);
 		String cacheDirPath = context.getCacheDir().getAbsolutePath();
 		webSet.setAppCachePath(cacheDirPath);
 		webSet.setAllowFileAccess(true);

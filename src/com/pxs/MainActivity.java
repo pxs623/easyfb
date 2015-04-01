@@ -129,7 +129,7 @@ public class MainActivity extends Activity implements MyInterface {
 			}
 		});
 		webview.loadUrl(launchUrl);
-		// 缓存当前界面
+		// cache current view
 		ve = new ViewEntity();
 		ve.setLayout(layout);
 		ViewManager.getManager().putView(launchUrl, ve);
