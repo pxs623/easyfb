@@ -1,8 +1,10 @@
 
-function forward(url)
+function forward(url,title,options)
 {	
     var obj=new Object();
     obj.url=("undefined" == typeof url)?"":url;
+    obj.title=("undefined" == typeof title)?"":title;
+    obj.options=("undefined" == typeof title)?"":options;
     android.action("forward:"+JSON.stringify(obj));
 }
 
@@ -17,7 +19,7 @@ function backward(url,needReload,isBackFlag)
 
 function toast(data)
 {
-    android.action("toast"+data);
+    android.action("toast:"+data);
 }
 
 //设置全局请求时间不超过40秒

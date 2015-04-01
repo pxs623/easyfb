@@ -9,8 +9,7 @@ public class MyWebViewClient extends WebViewClient {
 
 	@Override
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-		view.loadUrl(url);
-		return true;
+		return super.shouldOverrideUrlLoading(view, url);
 	}
 
 	@Override
@@ -21,6 +20,7 @@ public class MyWebViewClient extends WebViewClient {
 	@Override
 	public void onPageFinished(WebView view, String url) {
 		ViewManager.getManager().setBackFlag(false);
+		view.loadUrl("javascript:android.action('title:'+window.document.title)");
 		super.onPageFinished(view, url);
 	}
 

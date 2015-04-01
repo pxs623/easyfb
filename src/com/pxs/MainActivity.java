@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.pxs.util.ACache;
 import com.pxs.util.LinearLayoutSoftKeyboardDetect;
@@ -42,13 +43,12 @@ public class MainActivity extends Activity implements MyInterface {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//aCache = ACache.get(this);
+		aCache = ACache.get(this);
 		ViewManager.getManager().setContext(this);
 
 		LinearLayout layout = (LinearLayoutSoftKeyboardDetect) getLayoutInflater()
 				.inflate(R.layout.activity_main, null);
 		LinearLayout relative = (LinearLayout) layout.findViewById(R.id.head);
-
 		Intent i = getIntent();
 		bundle = i.getExtras();
 		if (bundle != null) {
@@ -78,7 +78,7 @@ public class MainActivity extends Activity implements MyInterface {
 				ViewEntity ve1 = new ViewEntity();
 				ve1.setLayout(layout);
 				ViewManager.getManager().putView(launchUrl, ve1);
-			} else {
+			} else {// 加载历史页面失败时的处理
 				viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
 				title = vb.getTitle();
 				needReload = true;
@@ -95,10 +95,10 @@ public class MainActivity extends Activity implements MyInterface {
 				layout.removeViewAt(1);
 				webview.init();
 				layout.addView(webview, 1);
-			} else {
-					//viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
-					//System.out.println(vb);
-					//title = vb.getTitle();
+			} else {// 取不到memory cache时，取disk cache
+					viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
+					System.out.println(vb);
+					title = vb.getTitle();
 					needReload = true;
 					isBackFlag = false;
 					forward(layout, relative);
@@ -128,15 +128,17 @@ public class MainActivity extends Activity implements MyInterface {
 
 			}
 		});
+		TextView tv =(TextView)relative.findViewById(R.id.title);
+		tv.setText(title);
 		webview.loadUrl(launchUrl);
 		// cache current view
 		ve = new ViewEntity();
 		ve.setLayout(layout);
 		ViewManager.getManager().putView(launchUrl, ve);
 		// disk cache
-/*		viewBean vb = new viewBean();
+		viewBean vb = new viewBean();
 		vb.setTitle(title);
-		aCache.put(launchUrl, vb);*/
+		aCache.put(launchUrl, vb);
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

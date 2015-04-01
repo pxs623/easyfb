@@ -7,6 +7,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.Window;
 import android.webkit.JavascriptInterface;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pxs.util.Datepicker;
@@ -63,6 +65,7 @@ public class JavaScriptInterface {
 							url = "file:///android_asset/" + jsonobj.getString("url");
 							Intent intent = new Intent(iface.getActivity(), MainActivity.class);
 							intent.putExtra("url", url);
+							intent.putExtra("title", jsonobj.getString("title"));
 							intent.putExtra("needReload", true);
 							iface.getActivity().startActivity(intent);
 							iface.getActivity().finish();
@@ -98,7 +101,7 @@ public class JavaScriptInterface {
 				} else if (temp.equals("toast")) {
 					Toast.makeText(iface.getActivity(), msgs[1], Toast.LENGTH_LONG).show();
 					return;
-				}
+				} 
 			}
 		});
 	}
