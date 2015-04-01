@@ -91,10 +91,10 @@ public class MainActivity extends Activity implements MyInterface {
 			if (ve != null) {
 				layout = ve.getLayout();
 				((ViewGroup) layout.getParent()).removeAllViews();
-				webview = (MyWebView) layout.getChildAt(2);
-				layout.removeViewAt(2);
+				webview = (MyWebView) layout.getChildAt(1);
+				layout.removeViewAt(1);
 				webview.init();
-				layout.addView(webview, 2);
+				layout.addView(webview, 1);
 			} else {
 					//viewBean vb = (viewBean) aCache.getAsObject(launchUrl);
 					//System.out.println(vb);
@@ -148,7 +148,7 @@ public class MainActivity extends Activity implements MyInterface {
 			}
 			if ("file:///android_asset/index.html".equals(launchUrl)) {
 				AlertDialog.Builder builder = new Builder(this);
-				builder.setMessage("quit");
+				builder.setMessage("Are you sure?");
 				builder.setTitle("quitʾ");
 				builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
 					@Override
