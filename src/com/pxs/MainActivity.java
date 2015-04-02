@@ -33,6 +33,7 @@ public class MainActivity extends Activity implements MyInterface {
 	private boolean needReload = true;
 	private boolean isBackFlag = false;
 	public static Bundle bundle;
+	private String backScript="javascript:if (typeof(backs) != 'undefined') {backs();}else{backward('index.html',false,true);}";
 	
 	private ViewEntity ve;
 	/**
@@ -124,7 +125,7 @@ public class MainActivity extends Activity implements MyInterface {
 					return;
 				}
 				ViewManager.getManager().setBackFlag(true);
-				webview.loadUrl("javascript:backs()");
+				webview.loadUrl(backScript);
 
 			}
 		});
@@ -170,13 +171,8 @@ public class MainActivity extends Activity implements MyInterface {
 				builder.create().show();
 				ViewManager.getManager().setBackFlag(false);
 			} else {
-				webview.loadUrl("javascript:"
-						+ "if (typeof(backs) != 'undefined') {"
-						+"backs();}else{"
-						+ "backward('index.html',false,true);"
-						+ "}");
+				webview.loadUrl(backScript);
 				}
-    
 			}
 		return super.onKeyDown(keyCode, event);
 	}

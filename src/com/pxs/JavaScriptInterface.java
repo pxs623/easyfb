@@ -91,7 +91,6 @@ public class JavaScriptInterface {
 								iface.getActivity().finish();
 								ViewManager.getManager().setBackFlag(false);
 							}
-
 						}
 					} catch (JSONException e) {
 						LOG.e(TAG, "jsonparse error", e);
