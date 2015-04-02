@@ -170,10 +170,14 @@ public class MainActivity extends Activity implements MyInterface {
 				builder.create().show();
 				ViewManager.getManager().setBackFlag(false);
 			} else {
-				webview.loadUrl("javascript:backs()");
+				webview.loadUrl("javascript:"
+						+ "if (typeof(backs) != 'undefined') {"
+						+"backs();}else{"
+						+ "backward('index.html',false,true);"
+						+ "}");
+				}
+    
 			}
-			return true;
-		}
 		return super.onKeyDown(keyCode, event);
 	}
 
