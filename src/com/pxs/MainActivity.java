@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements MyInterface {
 	private boolean needReload = true;
 	private boolean isBackFlag = false;
 	public static Bundle bundle;
-	private String backScript="javascript:if (typeof(backs) != 'undefined') {backs();}else{backward('index.html',false,true);}";
+	private String backScript="javascript:if (typeof backs != 'undefined') {backs();}else{backward('index.html',false,true);}";
 	
 	private ViewEntity ve;
 	/**
